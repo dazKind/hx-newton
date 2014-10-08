@@ -1,0 +1,50 @@
+<xml>
+    <set name="NATIVE_TOOLKIT_PATH" value="${haxelib:hx-newton}/deps" />
+
+    <files id='haxe'>
+
+        <compilerflag value='-DWIN32'/>
+        <compilerflag value='-DNDEBUG'/>
+        <compilerflag value='-D_WINDOWS'/>
+        <compilerflag value='-D_NEWTON_STATIC_LIB'/>
+        <compilerflag value='-D_CUSTOM_JOINTS_STATIC_LIB'/>
+        <compilerflag value='-D_USERDLL'/>
+        <compilerflag value='-DPTW32_BUILD'/>
+        <compilerflag value='-D__CLEANUP_C'/>
+        <compilerflag value='-DPTW32_STATIC_LIB'/>
+
+        <compilerflag value='-I${haxelib:hx-newton}/project/src'/>
+        <compilerflag value='-I${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/source/core'/>
+        <compilerflag value='-I${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/source/ampPhysics'/>
+        <compilerflag value='-I${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/source/meshUtil'/>
+        <compilerflag value='-I${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/source/physics'/>
+        <compilerflag value='-I${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/source/newton'/>
+        <compilerflag value='-I${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/source/pthreads.2'/>
+        
+        <file name='${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/source/pthreads.2/pthread.c'/>
+        <file name='${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/source/newton/newton.cpp'/>
+        <file name='${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/source/newton/NewtonClass.cpp'/>
+        <file name='${haxelib:hx-newton}/project/src/hx-newton.cpp'/>
+    </files>
+    <target id='haxe'>
+
+        <lib name='${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/projects/windows/project_vs2012_static_mt/Win32/newton/release/newton.lib' if="windows"/>
+
+        <lib name='${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/projects/windows/project_vs2012_static_mt/Win32/ampPhysics/release/ampPhysics.lib' if="windows"/>
+
+        <lib name='${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/projects/windows/project_vs2012_static_mt/Win32/core/release/core.lib' if="windows"/>
+
+        <lib name='${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/projects/windows/project_vs2012_static_mt/Win32/physics/release/physics.lib' if="windows"/>
+
+        <!--
+        <lib name='${haxelib:hx-newton}/deps/newton-dynamics/coreLibrary_300/source\pthreads.2\VS_2012_static_mt\Win32\pthread\release\pthread.lib' if="windows"/>
+        -->
+        
+
+        <!--<lib name='opengl32.lib' if="windows"/>
+        <vflag name="-framework" value="OpenGL" if="mac"/>-->
+
+        <!--<vflag name="" value="/FORCE:MULTIPLE"/>-->
+
+    </target>
+</xml>
