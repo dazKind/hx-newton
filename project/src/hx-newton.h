@@ -7,6 +7,7 @@
 
 namespace hxnewton {
     void worldSetDestructorCallback(const cpp::Pointer<NewtonWorld> _world, Dynamic _cb);
+    void bodySetForceAndTorqueCallback(const cpp::Pointer<NewtonBody> _body, Dynamic _cb);
 }
 
 

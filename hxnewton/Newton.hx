@@ -339,6 +339,7 @@ extern class NewtonClothPatchMaterial {
 
 
 typedef NewtonWorldDestructorCallback = ConstPointer<NewtonWorld>->Void;
+typedef NewtonApplyForceAndTorque = ConstPointer<NewtonBody>->Float32->Int->Void;
 
 
 @:include("hx-newton.h")
@@ -369,8 +370,52 @@ extern class Newton {
 	@:native("hxnewton::worldSetDestructorCallback")
 	public static function worldSetDestructorCallback(_world:ConstPointer<NewtonWorld>, _destructor:NewtonWorldDestructorCallback):Void;
 
+	@:native("::NewtonInvalidateCache")
+	public static function invalidateCache(_world:ConstPointer<NewtonWorld>):Void;
+
 	@:native("::NewtonCollisionGetInfo")
 	public static function collisionGetInfo(_collision:ConstPointer<NewtonCollision>, _collisionInfo:ConstPointer<NewtonCollisionInfoRecord>):Void;
 
+	@:native("::NewtonDestroyCollision")
+	public static function destroyCollision(_collision:ConstPointer<NewtonCollision>):Void;
 
+	@:native("::NewtonUpdate")
+	public static function update(_world:ConstPointer<NewtonWorld>, _timeStep:Float32):Void;
+
+	@:native("::NewtonCreateTreeCollision")
+	public static function createTreeCollision(_world:ConstPointer<NewtonWorld>, _shapeID:Int):Pointer<NewtonCollision>;
+
+	@:native("::NewtonTreeCollisionBeginBuild")
+	public static function treeCollisionBeginBuild(_treeCollision:ConstPointer<NewtonCollision>):Void;
+
+	@:native("::NewtonTreeCollisionAddFace")
+	public static function treeCollisionAddFace(_treeCollision:ConstPointer<NewtonCollision>, _vertexCount:Int, _vertexPtr:ConstPointer<Float32>, _strideInBytes:Int, _faceAttribute:Int):Void;
+
+	@:native("::NewtonTreeCollisionEndBuild")
+	public static function treeCollisionEndBuild(_treeCollision:ConstPointer<NewtonCollision>, _optimize:Int):Void;
+
+
+	@:native("::NewtonCreateDynamicBody")
+	public static function createDynamicBody(_world:ConstPointer<NewtonWorld>, _collision:ConstPointer<NewtonCollision>, _matrix:ConstPointer<Float32>):Pointer<NewtonBody>;
+
+	@:native("::NewtonBodyGetMassMatrix")
+	public static function bodyGetMassMatrix(_body:ConstPointer<NewtonBody>, _mass:ConstPointer<Float32>, _iXx:ConstPointer<Float32>, _iYy:ConstPointer<Float32>, _iZz:ConstPointer<Float32>):Void;
+
+	@:native("::NewtonBodyGetMatrix")
+	public static function bodyGetMatrix(_body:ConstPointer<NewtonBody>, _matrix:ConstPointer<Float32>):Void;
+
+	@:native("NewtonBodySetForce")
+	public static function bodySetForce(_body:ConstPointer<NewtonBody>, _force:ConstPointer<Float32>):Void;
+
+	@:native("NewtonCreateSphere")
+	public static function createSphere(_world:ConstPointer<NewtonWorld>, _radius:Float32, _shapeID:Int, _offsetMatrix:ConstPointer<Float32>):Pointer<NewtonCollision>;
+
+	@:native("hxnewton::bodySetForceAndTorqueCallback")
+	public static function bodySetForceAndTorqueCallback(_body:ConstPointer<NewtonBody>, _callback:NewtonApplyForceAndTorque):Void;
+
+	@:native("::NewtonBodySetMassProperties")
+	public static function bodySetMassProperties(_body:ConstPointer<NewtonBody>, _mass:Float32, _collision:ConstPointer<NewtonCollision>):Void;
+
+	@:native("::NewtonBodySetLinearDamping")
+	public static function bodySetLinearDamping(_body:ConstPointer<NewtonBody>, _linearDamp:Float32):Void;
 }
