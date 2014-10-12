@@ -418,4 +418,7 @@ extern class Newton {
 
 	@:native("::NewtonBodySetLinearDamping")
 	public static function bodySetLinearDamping(_body:ConstPointer<NewtonBody>, _linearDamp:Float32):Void;
+
+	@:native("::NewtonBodySetFreezeState")
+	public static function bodySetFreezeState(_body:ConstPointer<NewtonBody>, _state:Int):Void;
 }
